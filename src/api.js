@@ -2,7 +2,12 @@
 // Accès en lecture aux données publiques du portfolio, et envoi du
 // formulaire de contact. fetch suffit : pas de dépendance supplémentaire.
 
-const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000/api').replace(/\/+$/, '')
+// VITE_API_URL prime si elle est définie (sur Vercel ou dans un .env).
+// Sinon : l'API de production pour un build, le serveur local en développement.
+const API_URL = (
+  import.meta.env.VITE_API_URL
+  || (import.meta.env.DEV ? 'http://localhost:8000/api' : 'https://backend-yougo.onrender.com/api')
+).replace(/\/+$/, '')
 
 // L'offre gratuite de Render met le service en veille après 15 minutes sans
 // trafic : le premier appel peut prendre jusqu'à une minute.
