@@ -111,6 +111,8 @@ export const INITIAL_PROJECTS = [
 ]
 
 // ─── CONTACT LINKS ────────────────────────────────────────
+// Données de secours : en fonctionnement normal, projets et liens viennent du
+// back-office via l'API. Ceux-ci ne s'affichent que si l'API est injoignable.
 export const CONTACT_LINKS = [
   {
     label: 'Email',
@@ -126,8 +128,8 @@ export const CONTACT_LINKS = [
   },
   {
     label: 'GitHub',
-    value: 'github.com/yougo',
-    href: 'https://github.com',
+    value: 'github.com/skillyougen',
+    href: 'https://github.com/skillyougen',
     icon: '⬡',
   },
   {
