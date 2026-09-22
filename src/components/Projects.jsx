@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { INITIAL_PROJECTS } from '../data'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -10,14 +9,18 @@ const fadeUp = (delay = 0) => ({
 })
 
 const CAT_ICONS = { web: '🌐', mobile: '📱', desktop: '🖥️', gaming: '🎮' }
+
+/** Lien exploitable : les données de secours utilisent « # » comme marqueur. */
+const isLink = (url) => !!url && url !== '#'
 const CAT_LABELS = { web: 'Web', mobile: 'Mobile', desktop: 'Desktop', gaming: 'Gaming' }
 const FILTERS = ['Tous', 'web', 'mobile', 'desktop', 'gaming']
 
-export default function Projects({ projects, setProjects }) {
+export default function Projects({ projects, loading }) {
   const [filter, setFilter] = useState('Tous')
 
+  const list = projects || []
   const displayed =
-    filter === 'Tous' ? projects : projects.filter((p) => p.cat === filter)
+    filter === 'Tous' ? list : list.filter((p) => p.cat === filter)
 
   return (
     <section id="projects" className="py-24 md:py-32 bg-white">
@@ -52,13 +55,32 @@ export default function Projects({ projects, setProjects }) {
         </div>
 
         {/* Grille projets */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <AnimatePresence mode="popLayout">
-            {displayed.map((p, i) => (
-              <ProjectCard key={p.id} project={p} index={i} />
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6" aria-busy="true" aria-label="Chargement des projets">
+            {[0, 1].map((i) => (
+              <div key={i} className="border border-dark/8 bg-cream animate-pulse">
+                <div className="h-52 bg-dark/5" />
+                <div className="p-6 flex flex-col gap-3">
+                  <div className="h-5 w-1/2 bg-dark/10" />
+                  <div className="h-3 w-full bg-dark/5" />
+                  <div className="h-3 w-4/5 bg-dark/5" />
+                </div>
+              </div>
             ))}
-          </AnimatePresence>
-        </div>
+          </div>
+        ) : displayed.length === 0 ? (
+          <p className="text-center py-16 font-mono text-sm text-soft">
+            {list.length === 0 ? 'Projets à venir.' : 'Aucun projet dans cette catégorie pour le moment.'}
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <AnimatePresence mode="popLayout">
+              {displayed.map((p, i) => (
+                <ProjectCard key={p.id} project={p} index={i} />
+              ))}
+            </AnimatePresence>
+          </div>
+        )}
       </div>
     </section>
   )
@@ -83,13 +105,24 @@ function ProjectCard({ project: p, index }) {
         className="relative h-52 flex items-center justify-center overflow-hidden"
         style={{ background: p.color + '12' }}
       >
-        <motion.span
-          animate={{ scale: hovered ? 1.15 : 1 }}
-          transition={{ duration: 0.4 }}
-          className="text-6xl select-none"
-        >
-          {CAT_ICONS[p.cat]}
-        </motion.span>
+        {p.image ? (
+          <motion.img
+            src={p.image}
+            alt={p.title}
+            loading="lazy"
+            animate={{ scale: hovered ? 1.05 : 1 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <motion.span
+            animate={{ scale: hovered ? 1.15 : 1 }}
+            transition={{ duration: 0.4 }}
+            className="text-6xl select-none"
+          >
+            {CAT_ICONS[p.cat] || '✨'}
+          </motion.span>
+        )}
         {/* Cat badge */}
         <span
           className="absolute top-4 left-4 font-mono text-xs px-3 py-1 font-medium"
@@ -103,7 +136,7 @@ function ProjectCard({ project: p, index }) {
           className="absolute inset-0 flex items-center justify-center gap-4"
           style={{ background: 'rgba(17,17,17,0.6)' }}
         >
-          {p.github && p.github !== '#' && (
+          {isLink(p.github) && (
             <a
               href={p.github}
               target="_blank"
@@ -114,7 +147,7 @@ function ProjectCard({ project: p, index }) {
               GitHub ↗
             </a>
           )}
-          {p.demo && p.demo !== '#' && (
+          {isLink(p.demo) && (
             <a
               href={p.demo}
               target="_blank"
@@ -144,6 +177,25 @@ function ProjectCard({ project: p, index }) {
             </span>
           ))}
         </div>
+
+        {/* Liens toujours visibles : l'incrustation au survol n'existe pas
+            sur un écran tactile. */}
+        {(isLink(p.github) || isLink(p.demo)) && (
+          <div className="flex gap-4 mt-5 pt-4 border-t border-dark/8">
+            {isLink(p.github) && (
+              <a href={p.github} target="_blank" rel="noreferrer"
+                className="font-sans text-xs text-dark hover:text-accent transition-colors">
+                GitHub ↗
+              </a>
+            )}
+            {isLink(p.demo) && (
+              <a href={p.demo} target="_blank" rel="noreferrer"
+                className="font-sans text-xs text-dark hover:text-accent transition-colors">
+                Démo ↗
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </motion.article>
   )
