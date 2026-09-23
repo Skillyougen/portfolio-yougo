@@ -8,39 +8,84 @@
   }
 
   body {
-    background-color: #F5F3EE;
-    color: #111111;
-    font-family: 'DM Sans', Arial, sans-serif;
+    background-color: #E6E5E1;
+    color: #3B3B3B;
+    font-family: 'Outfit', Arial, sans-serif;
     overflow-x: hidden;
   }
 
   ::selection {
-    background: #E8533A;
+    background: #DD8A16;
     color: white;
   }
 
   ::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #F5F3EE;
+    background: #E6E5E1;
   }
   ::-webkit-scrollbar-thumb {
-    background: #111;
-    border-radius: 2px;
+    background: #8C8C8A;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* Papier texturé façon béton : halo clair, grain fin et taches diffuses
+     (dégradés qui s'éteignent avant le bord de leur tuile : aucune couture). */
+  .paper {
+    background-color: #E6E5E1;
+    background-image:
+      radial-gradient(ellipse 70% 900px at 50% 0, rgba(255, 255, 255, 0.6), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      radial-gradient(circle 600px at 50% 50%, rgba(0, 0, 0, 0.07), transparent 100%),
+      radial-gradient(circle 500px at 50% 50%, rgba(0, 0, 0, 0.05), transparent 100%),
+      radial-gradient(circle 700px at 50% 50%, rgba(255, 255, 255, 0.35), transparent 100%);
+    background-size: auto, 240px 240px, 1300px 1300px, 1100px 1100px, 1500px 1500px;
+    background-position: 0 0, 0 0, -250px 0, 520px 700px, 300px 1100px;
+  }
+
+  /* Plateau gris arrondi, quadrillé, en relief (cf. maquettes d'inspiration). */
+  .panel {
+    border-radius: 2rem;
+    background-color: #8C8C8A;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.08));
+    background-size: 26px 26px, 26px 26px, 100% 100%;
+    box-shadow:
+      inset 0 2px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -3px 0 rgba(0, 0, 0, 0.12),
+      0 30px 50px -28px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Carte blanche posée sur un plateau. */
+  .card {
+    border-radius: 1.25rem;
+    background: #FAFAF8;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 12px 24px -14px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Lettrage gris imprimé dans le papier. */
+  .emboss {
+    color: #454545;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.55), -1px -1px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .outline-text {
+    color: transparent;
+    -webkit-text-stroke: 1.5px currentColor;
+  }
+
+  .kicker {
+    @apply font-sans text-[11px] uppercase tracking-[0.32em] text-mid;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-
-  .clip-hero {
-    clip-path: ellipse(80% 100% at 50% 0%);
-  }
-
-  .border-mid {
-    border-color: rgba(17, 17, 17, 0.12);
   }
 }

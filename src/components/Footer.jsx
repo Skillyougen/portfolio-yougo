@@ -26,12 +26,13 @@ export default function Footer() {
   return (
     <footer
       onClick={handleFooterClick}
-      className="bg-dark border-t border-white/6 py-8 cursor-pointer select-none"
+      className="relative bg-graphite pt-16 pb-8 cursor-pointer select-none overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
-        <span className="font-serif text-lg font-bold text-white">
-          YOUGO<span className="text-accent">.</span>
-        </span>
+      <p aria-hidden="true" className="font-display uppercase text-center leading-[0.8] text-[clamp(5rem,22vw,20rem)] text-white/[0.07]">
+        Yougo
+      </p>
+      <div className="max-w-7xl mx-auto px-5 md:px-10 mt-8 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 pt-6">
+        <span className="font-script text-accent text-3xl leading-none">Built with heart</span>
 
         {/* Indicateur secret (5 points) */}
         <div className="flex items-center gap-2">
@@ -39,7 +40,7 @@ export default function Footer() {
             <motion.span
               key={i}
               animate={{
-                backgroundColor: i < clicks ? '#E8533A' : 'rgba(255,255,255,0.15)',
+                backgroundColor: i < clicks ? '#DD8A16' : 'rgba(255,255,255,0.15)',
                 scale: i < clicks ? 1.3 : 1,
               }}
               transition={{ duration: 0.2 }}
@@ -48,10 +49,10 @@ export default function Footer() {
           ))}
         </div>
 
-        <span className="font-sans text-xs text-white/30">
+        <span className="font-sans text-xs text-white/40">
           {clicks > 0
             ? `${5 - clicks} clic(s) restants…`
-            : `© ${new Date().getFullYear()} FOMO NGANKAMG Pascal Yohann Saurel`}
+            : `© ${new Date().getFullYear()} Pascal Yohann Saurel FOMO NGANKAMG`}
         </span>
       </div>
     </footer>

@@ -47,6 +47,7 @@ export const LINK_ICON_CHOICES = [
 const UI_ICONS = [
   'arrow_forward', 'north_east', 'download', 'check_circle', 'bolt',
   'location_on', 'school', 'mail', 'smartphone', 'auto_awesome',
+  'call', 'verified', 'workspace_premium', 'menu_book',
 ]
 
 export const ICON_NAMES = [...new Set([

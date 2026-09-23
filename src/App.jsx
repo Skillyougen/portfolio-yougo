@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Education from './components/Education'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Goals from './components/Goals'
@@ -17,10 +18,11 @@ export default function App() {
   const links = useApiData(fetchContactLinks, CONTACT_LINKS)
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen paper">
       <Navbar />
       <Hero />
       <About />
+      <Education />
       <Skills />
       <Projects projects={projects.data} loading={projects.loading} />
       <Goals />

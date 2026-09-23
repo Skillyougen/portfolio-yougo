@@ -1,12 +1,65 @@
 // ─── NAVIGATION ───────────────────────────────────────────
 export const NAV_LINKS = [
-  { label: 'Home', href: '#hero' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Goals', href: '#goals' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Accueil', href: '#hero' },
+  { label: 'À propos', href: '#about' },
+  { label: 'Parcours', href: '#parcours' },
+  { label: 'Compétences', href: '#skills' },
+  { label: 'Projets', href: '#projects' },
+  { label: 'Objectifs', href: '#goals' },
 ]
+
+// ─── PROFIL ───────────────────────────────────────────────
+export const PROFILE = {
+  phone: '+33 6 63 78 86 67',
+  phoneHref: 'tel:+33663788667',
+  email: 'yohannngankamg@gmail.com',
+  location: 'Paris, France',
+  cv: '/cv-yougo.pdf',
+}
+
+// ─── CURSUS SCOLAIRE ──────────────────────────────────────
+// Du plus ancien au plus récent : la frise se lit comme un escalier.
+export const EDUCATION = [
+  {
+    years: '2021 – 2022',
+    level: 'Première',
+    diploma: 'Probatoire',
+    detail: 'Série D — mathématiques et sciences de la vie',
+    school: 'Cameroun',
+    icon: 'menu_book',
+  },
+  {
+    years: '2022 – 2023',
+    level: 'Bac',
+    diploma: 'Baccalauréat général',
+    detail: 'Série D — mathématiques et sciences de la vie',
+    school: 'Lycée bilingue de Ngodi Bakoko',
+    icon: 'school',
+  },
+  {
+    years: '2024 – 2026',
+    level: 'Bac+2',
+    diploma: 'DEC canadien',
+    detail: 'Programmation et applications mobiles',
+    school: 'CCNB (Canada) · IUC Douala',
+    icon: 'workspace_premium',
+  },
+  {
+    years: '2026 – en cours',
+    level: 'Bac+3',
+    diploma: 'Bachelor DEVIA',
+    detail: 'Développeur en intelligence artificielle',
+    school: 'EPSI Paris',
+    current: true,
+  },
+]
+
+export const CERTIFICATION = {
+  title: 'Claude 101',
+  issuer: 'Anthropic Academy',
+  desc: "Fondamentaux de Claude, l'assistant IA d'Anthropic, et de son usage au quotidien.",
+  url: 'https://academy.claude.com/verify/61fba659898d01e4801e399e9b8ceb07',
+}
 
 // ─── SKILLS ───────────────────────────────────────────────
 export const SKILL_GROUPS = [
@@ -14,13 +67,13 @@ export const SKILL_GROUPS = [
     cat: 'Frontend',
     color: '#E8533A',
     bg: '#FDF1EE',
-    items: ['React.js', 'JavaScript', 'HTML / CSS', 'React Native'],
+    items: ['React.js', 'JavaScript', 'HTML / CSS', 'Tailwind CSS', 'React Native'],
   },
   {
     cat: 'Backend',
     color: '#2563EB',
     bg: '#EEF3FD',
-    items: ['Laravel', 'Django'],
+    items: ['Laravel (PHP)', 'Django', 'API REST'],
   },
   {
     cat: 'Desktop',
@@ -38,7 +91,7 @@ export const SKILL_GROUPS = [
     cat: 'Base de données',
     color: '#D97706',
     bg: '#FFFBEB',
-    items: ['MySQL', 'SQL'],
+    items: ['SQL', 'MySQL', 'PostgreSQL'],
   },
 ]
 
@@ -46,22 +99,22 @@ export const SKILL_GROUPS = [
 export const SERVICES = [
   {
     icon: 'language',
-    title: 'Website Development',
+    title: 'Développement web',
     desc: 'Applications web modernes et performantes avec React.js, Laravel ou Django.',
   },
   {
     icon: 'smartphone',
-    title: 'Mobile App',
+    title: 'Applications mobiles',
     desc: 'Applications cross-platform fluides avec React Native.',
   },
   {
     icon: 'desktop_windows',
-    title: 'Desktop Development',
+    title: 'Logiciels desktop',
     desc: 'Applications desktop robustes en C# et Java avec architecture multi-couches.',
   },
   {
     icon: 'sports_esports',
-    title: 'Game Development',
+    title: 'Jeu vidéo',
     desc: 'Jeux interactifs développés avec Unity et C# sous Visual Studio.',
   },
 ]
@@ -122,11 +175,11 @@ export const CONTACT_LINKS = [
     icon: 'mail',
   },
   {
-    platform: 'whatsapp',
-    label: 'WhatsApp',
-    value: '+237 678 99 30 41',
-    href: 'https://wa.me/237678993041',
-    icon: 'chat',
+    platform: 'phone',
+    label: 'Téléphone',
+    value: '+33 6 63 78 86 67',
+    href: 'tel:+33663788667',
+    icon: 'call',
   },
   {
     platform: 'github',

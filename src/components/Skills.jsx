@@ -1,115 +1,97 @@
 import { motion } from 'framer-motion'
 import { SKILL_GROUPS } from '../data'
+import SectionTitle from './ui/SectionTitle'
+import { reveal } from '../motion'
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-80px' },
-  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay },
-})
+const LANGUAGES = [
+  ['FR', 'Français', 'B2', 4],
+  ['EN', 'Anglais', 'B1', 3],
+]
+const TOOLS = ['VS Code', 'Visual Studio', 'NetBeans', 'Git & GitHub', 'Docker', 'Claude', 'Suite Office']
+const MARQUEE = ['React.js', 'Laravel', 'React Native', 'C# .NET', 'Java', 'Unity', 'PostgreSQL', 'Django', 'IA & ML']
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 md:py-32 bg-cream">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section id="skills" className="py-20 md:py-24">
+      <div className="max-w-7xl mx-auto px-5 md:px-10">
+        <SectionTitle index="03" kicker="Compétences" meta="Web · Mobile · Desktop · Jeu" title="Compétences" script="ce que je maîtrise" />
 
-        {/* Header */}
-        <div className="flex items-center gap-6 mb-16">
-          <motion.p {...fadeUp(0)} className="font-mono text-xs text-accent tracking-[4px] uppercase whitespace-nowrap">
-            Compétences
-          </motion.p>
-          <div className="flex-1 h-px bg-dark/10" />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-          {/* Titre gauche */}
-          <motion.div {...fadeUp(0.1)}>
-            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.8rem)] font-bold leading-tight text-dark mb-6">
-              Ce que<br />je maîtrise
-            </h2>
-            <p className="font-sans text-mid text-base leading-relaxed max-w-sm">
-              Des technologies variées couvrant le web, le mobile, le desktop et le gaming — avec un objectif clair : l'IA.
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-14 items-start">
+          <motion.div {...reveal(0.1)}>
+            <p className="font-sans text-mid text-lg leading-relaxed max-w-sm">
+              Des technologies variées couvrant le web, le mobile, le desktop et le jeu vidéo — avec un objectif clair :
+              <b className="text-ink font-semibold"> l'intelligence artificielle</b>.
             </p>
 
-            {/* Langues */}
-            <div className="mt-10 flex flex-wrap gap-3">
-              {[['🇫🇷', 'Français', 'B2', '#E8533A'], ['🇬🇧', 'Anglais', 'B1', '#2563EB']].map(([flag, lang, lvl, col]) => (
-                <motion.div
-                  key={lang}
-                  whileHover={{ y: -3 }}
-                  className="flex items-center gap-3 bg-white border border-dark/8 px-4 py-3 shadow-sm"
-                >
-                  <span className="text-xl">{flag}</span>
+            <p className="kicker mt-10 mb-3">Langues</p>
+            <div className="flex flex-wrap gap-3">
+              {LANGUAGES.map(([code, lang, lvl, dots]) => (
+                <div key={lang} className="flex items-center gap-3 rounded-card bg-white/60 border border-white px-4 py-3">
+                  <span className="w-10 h-10 rounded-full bg-ink text-white font-display text-sm flex items-center justify-center">{code}</span>
                   <div>
-                    <p className="font-sans font-semibold text-sm text-dark">{lang}</p>
-                    <p className="font-mono text-xs" style={{ color: col }}>{lvl}</p>
+                    <p className="font-sans font-semibold text-sm text-ink">{lang} <span className="text-accent">{lvl}</span></p>
+                    <div className="flex gap-1 mt-1" aria-label={`Niveau ${lvl}`}>
+                      {[0, 1, 2, 3, 4].map((d) => (
+                        <span key={d} className={`w-2 h-2 rounded-full ${d < dots ? 'bg-ink' : 'bg-ink/15'}`} />
+                      ))}
+                    </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
-            {/* Outils */}
-            <div className="mt-8">
-              <p className="font-mono text-xs text-soft tracking-widest uppercase mb-3">Outils</p>
-              <div className="flex flex-wrap gap-2">
-                {['VS Code', 'Visual Studio', 'NetBeans', 'Git', 'Office'].map((t) => (
-                  <span key={t} className="font-sans text-xs text-mid border border-dark/10 px-3 py-1.5 hover:border-dark/30 transition-colors cursor-default">
-                    {t}
-                  </span>
-                ))}
-              </div>
+            <p className="kicker mt-8 mb-3">Outils</p>
+            <div className="flex flex-wrap gap-2">
+              {TOOLS.map((t) => (
+                <span key={t} className="font-sans text-sm text-ink bg-white/60 border border-white px-3.5 py-1.5 rounded-full">
+                  {t}
+                </span>
+              ))}
             </div>
           </motion.div>
 
-          {/* Cards compétences */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <motion.div {...reveal(0.15)} className="panel p-4 md:p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {SKILL_GROUPS.map((g, i) => (
               <motion.div
                 key={g.cat}
-                {...fadeUp(0.1 + i * 0.07)}
-                whileHover={{ y: -5, shadow: '0 20px 40px rgba(0,0,0,0.08)' }}
-                className="bg-white border border-dark/6 p-6 hover:border-dark/15 transition-all duration-300 group"
-                style={{ borderTop: `3px solid ${g.color}` }}
+                {...reveal(0.15 + i * 0.06)}
+                className={`card p-6 ${i === SKILL_GROUPS.length - 1 && SKILL_GROUPS.length % 2 ? 'sm:col-span-2' : ''}`}
               >
-                <h3
-                  className="font-sans font-semibold text-xs uppercase tracking-widest mb-4"
-                  style={{ color: g.color }}
-                >
-                  {g.cat}
-                </h3>
+                <div className="flex items-center gap-2.5 mb-4">
+                  <span className="w-2.5 h-2.5 rounded-full" style={{ background: g.color }} />
+                  <h3 className="font-display uppercase text-2xl text-ink leading-none">{g.cat}</h3>
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {g.items.map((it) => (
-                    <motion.span
+                    <span
                       key={it}
-                      whileHover={{ scale: 1.05 }}
-                      className="font-sans text-xs text-dark border border-dark/10 px-3 py-1.5 rounded-full hover:bg-dark hover:text-cream transition-all duration-200 cursor-default"
+                      className="font-sans text-xs text-ink bg-paper px-3 py-1.5 rounded-full hover:bg-ink hover:text-white transition-colors cursor-default"
                     >
                       {it}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-
-        {/* Bande défilante */}
-        <div className="mt-20 overflow-hidden border-t border-b border-dark/8 py-5">
-          <motion.div
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-            className="flex gap-12 whitespace-nowrap"
-          >
-            {[...Array(2)].map((_, rep) => (
-              ['React.js', 'JavaScript', 'Laravel', 'Django', 'Unity', 'C#', 'Java', 'MySQL', 'React Native', 'IA & ML'].map((t) => (
-                <span key={`${rep}-${t}`} className="font-serif italic text-2xl text-dark/15 select-none">
-                  {t} ·
-                </span>
-              ))
-            ))}
           </motion.div>
         </div>
+      </div>
+
+      {/* Bandeau défilant en lettres évidées */}
+      <div className="mt-24 overflow-hidden border-y border-ink/15 py-6" aria-hidden="true">
+        <motion.div
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+          className="flex gap-10 whitespace-nowrap w-max"
+        >
+          {[0, 1].map((rep) =>
+            MARQUEE.map((t) => (
+              <span key={`${rep}-${t}`} className="font-display uppercase text-6xl md:text-7xl text-ink/35 outline-text select-none">
+                {t} <span className="font-script normal-case text-accent [-webkit-text-stroke:0] text-5xl">&amp;</span>
+              </span>
+            ))
+          )}
+        </motion.div>
       </div>
     </section>
   )
