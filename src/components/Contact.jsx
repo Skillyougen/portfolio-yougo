@@ -2,13 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { sendMessage, errorMessage } from '../api'
 import Icon from './ui/Icon'
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1], delay },
-})
+import SectionTitle from './ui/SectionTitle'
+import { reveal as fadeUp } from '../motion'
 
 const EMPTY = { name: '', email: '', msg: '', website: '' }
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -50,33 +45,26 @@ export default function Contact({ links, loading }) {
   const reset = () => { setStatus('idle'); setError(''); setForm(EMPTY) }
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-cream">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section id="contact" className="py-20 md:py-24">
+      <div className="max-w-7xl mx-auto px-5 md:px-10">
+        <SectionTitle index="06" kicker="Contact" meta="Réponse rapide" title="Contact" script="écrivez-moi" />
 
-        {/* Header */}
-        <div className="flex items-center gap-6 mb-16">
-          <motion.p {...fadeUp(0)} className="font-mono text-xs text-accent tracking-[4px] uppercase whitespace-nowrap">
-            Contact
-          </motion.p>
-          <div className="flex-1 h-px bg-dark/10" />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
 
           {/* ── GAUCHE ── */}
           <motion.div {...fadeUp(0.1)}>
-            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.8rem)] font-bold leading-tight text-dark mb-6">
-              Parlons de<br />votre projet
-            </h2>
-            <p className="font-sans text-mid text-base leading-relaxed mb-10 max-w-sm">
-              Un projet, une collaboration ou une question ? Je suis disponible. Écrivez-moi directement.
+            <p className="font-sans text-2xl md:text-3xl font-light leading-snug text-ink mb-4">
+              Parlons de <b className="font-semibold">votre projet</b>.
+            </p>
+            <p className="font-sans text-mid text-base leading-relaxed mb-8 max-w-md">
+              Un projet, une alternance, une collaboration ou une question ? Je suis disponible. Écrivez-moi directement.
             </p>
 
             {/* Liens */}
-            <div className="flex flex-col gap-4">
+            <div className="panel p-3 md:p-4 flex flex-col gap-3">
               {loading
                 ? [0, 1, 2].map(i => (
-                    <div key={i} className="h-[70px] border border-dark/8 bg-white animate-pulse" />
+                    <div key={i} className="card h-[72px] animate-pulse" />
                   ))
                 : (links || []).map((l, i) => (
                     <motion.a
@@ -86,39 +74,40 @@ export default function Contact({ links, loading }) {
                       rel="noreferrer"
                       {...fadeUp(0.15 + i * 0.06)}
                       whileHover={{ x: 6 }}
-                      className="flex items-center gap-4 group border border-dark/8 px-5 py-4 bg-white hover:border-dark/20 transition-all duration-300"
+                      className="card flex items-center gap-4 group px-4 py-3.5"
                     >
-                      <span className="w-8 flex justify-center text-accent"><Icon name={l.icon} size={24} /></span>
+                      <span className="w-11 h-11 rounded-full bg-paper flex items-center justify-center text-ink group-hover:bg-accent group-hover:text-white transition-colors shrink-0"><Icon name={l.icon} size={22} /></span>
                       <div className="flex-1 min-w-0">
-                        <p className="font-mono text-xs text-soft uppercase tracking-widest mb-0.5">{l.label}</p>
-                        <p className="font-sans text-sm text-dark truncate">{l.value}</p>
+                        <p className="kicker text-[10px] mb-0.5">{l.label}</p>
+                        <p className="font-sans text-sm text-ink truncate">{l.value}</p>
                       </div>
-                      <span className="text-soft group-hover:text-dark transition-colors ml-auto flex"><Icon name="north_east" size={18} /></span>
+                      <span className="text-soft group-hover:text-accent transition-colors ml-auto flex"><Icon name="north_east" size={18} /></span>
                     </motion.a>
                   ))}
             </div>
           </motion.div>
 
           {/* ── DROITE : Formulaire ── */}
-          <motion.div {...fadeUp(0.2)} className="bg-white border border-dark/8 p-8 md:p-10">
+          <motion.div {...fadeUp(0.2)} className="panel p-3 md:p-4">
+            <div className="card p-7 md:p-10">
             {status === 'sent' ? (
               <div className="text-center py-12" role="status">
                 <div className="mb-5 flex justify-center text-green-600"><Icon name="check_circle" size={56} filled /></div>
-                <h3 className="font-serif text-2xl font-bold text-dark mb-2">Message envoyé !</h3>
+                <h3 className="font-display uppercase text-4xl text-ink mb-2">Message envoyé !</h3>
                 <p className="font-sans text-mid text-sm mb-8">Merci, je vous réponds dès que possible.</p>
                 <button
                   onClick={reset}
-                  className="font-sans text-sm bg-dark text-cream px-6 py-3 hover:bg-accent transition-colors"
+                  className="font-sans text-sm bg-ink text-white px-6 py-3 rounded-full hover:bg-accent transition-colors"
                 >
                   Nouveau message
                 </button>
               </div>
             ) : (
               <form onSubmit={(e) => { e.preventDefault(); send() }} noValidate>
-                <h3 className="font-serif text-xl font-bold text-dark mb-7">Envoyer un message</h3>
+                <h3 className="font-display uppercase text-3xl text-ink mb-7">Envoyer un message</h3>
 
                 {error && (
-                  <div role="alert" className="bg-red-50 border border-red-200 text-red-700 text-sm font-sans px-4 py-3 mb-5">
+                  <div role="alert" className="bg-red-50 border border-red-200 text-red-700 text-sm font-sans px-4 py-3 mb-5 rounded-xl">
                     {error}
                   </div>
                 )}
@@ -140,7 +129,7 @@ export default function Contact({ links, loading }) {
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="contact-msg" className="font-mono text-xs text-soft tracking-widest uppercase">Message *</label>
+                    <label htmlFor="contact-msg" className="kicker text-[10px]">Message *</label>
                     <textarea
                       id="contact-msg"
                       rows={5}
@@ -148,15 +137,14 @@ export default function Contact({ links, loading }) {
                       value={form.msg}
                       onChange={e => setForm(p => ({ ...p, msg: e.target.value }))}
                       placeholder="Décrivez votre projet…"
-                      className="font-sans text-sm text-dark bg-cream border border-dark/10 px-4 py-3 focus:border-dark/30 outline-none resize-none transition-colors"
+                      className="font-sans text-sm text-ink bg-paper/70 border border-ink/10 rounded-xl px-4 py-3 focus:border-accent focus:bg-white outline-none resize-none transition-colors"
                     />
                   </div>
                   <motion.button
                     type="submit"
                     disabled={status === 'sending'}
-                    whileHover={{ backgroundColor: '#E8533A' }}
                     whileTap={{ scale: 0.97 }}
-                    className="font-sans font-medium text-sm bg-dark text-cream px-6 py-4 transition-colors duration-300 text-left flex items-center justify-between group disabled:opacity-60"
+                    className="font-sans font-medium text-sm bg-ink text-white px-6 py-4 rounded-full hover:bg-accent transition-colors duration-300 text-left flex items-center justify-between group disabled:opacity-60"
                   >
                     <span>{status === 'sending' ? 'Envoi en cours…' : 'Envoyer le message'}</span>
                     <span className="group-hover:translate-x-1 transition-transform flex"><Icon name="arrow_forward" size={18} /></span>
@@ -164,6 +152,7 @@ export default function Contact({ links, loading }) {
                 </div>
               </form>
             )}
+            </div>
           </motion.div>
         </div>
       </div>
@@ -175,7 +164,7 @@ function Field({ label, name, val, set, type = 'text', autoComplete }) {
   const id = `contact-${name}`
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="font-mono text-xs text-soft tracking-widest uppercase">{label}</label>
+      <label htmlFor={id} className="kicker text-[10px]">{label}</label>
       <input
         id={id}
         name={name}
@@ -183,7 +172,7 @@ function Field({ label, name, val, set, type = 'text', autoComplete }) {
         autoComplete={autoComplete}
         value={val}
         onChange={e => set(e.target.value)}
-        className="font-sans text-sm text-dark bg-cream border border-dark/10 px-4 py-3 focus:border-dark/30 outline-none transition-colors"
+        className="font-sans text-sm text-ink bg-paper/70 border border-ink/10 rounded-xl px-4 py-3 focus:border-accent focus:bg-white outline-none transition-colors"
       />
     </div>
   )

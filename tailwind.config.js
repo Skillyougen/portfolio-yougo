@@ -4,17 +4,24 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['"DM Sans"', 'Arial', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        // Direction « éditoriale » : grandes capitales condensées, accent
+        // manuscrit orange et texte courant géométrique.
+        display: ['Anton', 'Impact', '"Arial Narrow"', 'sans-serif'],
+        script: ['Allura', '"Brush Script MT"', 'cursive'],
+        sans: ['Outfit', 'Arial', 'sans-serif'],
       },
       colors: {
-        cream: '#F5F3EE',
-        beige: '#EDE9E0',
-        accent: '#E8533A',
-        dark: '#111111',
-        mid: '#555555',
-        soft: '#999999',
+        paper: '#E6E5E1',
+        ink: '#3B3B3B',
+        graphite: '#262626',
+        panel: '#8C8C8A',
+        accent: '#DD8A16',
+        mid: '#5E5E5C',
+        soft: '#8F8F8C',
+      },
+      borderRadius: {
+        panel: '2rem',
+        card: '1.25rem',
       },
     },
   },
