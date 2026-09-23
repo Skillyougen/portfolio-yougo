@@ -37,16 +37,17 @@ export default function Navbar() {
             Yougo<span className="text-accent">.</span>
           </button>
 
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav aria-label="Navigation principale" className="hidden lg:flex items-center gap-7">
             {NAV_LINKS.map((l) => (
-              <button
+              <a
                 key={l.href}
-                onClick={() => scrollTo(l.href)}
+                href={l.href}
+                onClick={(e) => { e.preventDefault(); scrollTo(l.href) }}
                 className="text-[13px] text-mid hover:text-ink transition-colors font-sans tracking-wide relative group"
               >
                 {l.label}
                 <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
-              </button>
+              </a>
             ))}
           </nav>
 
@@ -79,18 +80,19 @@ export default function Navbar() {
             transition={{ duration: 0.25 }}
             className="fixed top-20 inset-x-3 z-40 paper rounded-panel border border-white/60 shadow-2xl lg:hidden"
           >
-            <nav className="flex flex-col px-6 py-6 gap-4">
+            <nav aria-label="Navigation principale" className="flex flex-col px-6 py-6 gap-4">
               {NAV_LINKS.map((l, i) => (
-                <motion.button
+                <motion.a
                   key={l.href}
+                  href={l.href}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.04 }}
-                  onClick={() => scrollTo(l.href)}
+                  onClick={(e) => { e.preventDefault(); scrollTo(l.href) }}
                   className="text-left font-display uppercase text-2xl text-ink hover:text-accent transition-colors"
                 >
                   {l.label}
-                </motion.button>
+                </motion.a>
               ))}
               <button
                 onClick={() => scrollTo('#contact')}

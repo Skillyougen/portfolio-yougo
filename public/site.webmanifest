@@ -1,0 +1,15 @@
+{
+  "name": "Yougo — Portfolio",
+  "short_name": "Yougo",
+  "description": "Portfolio de Pascal Yohann Saurel FOMO NGANKAMG, développeur en intelligence artificielle.",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E6E5E1",
+  "theme_color": "#E6E5E1",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

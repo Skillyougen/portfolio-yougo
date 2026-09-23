@@ -20,13 +20,15 @@ export default function App() {
   return (
     <div className="min-h-screen paper">
       <Navbar />
-      <Hero />
-      <About />
-      <Education />
-      <Skills />
-      <Projects projects={projects.data} loading={projects.loading} />
-      <Goals />
-      <Contact links={links.data} loading={links.loading} />
+      <main>
+        <Hero />
+        <About />
+        <Education />
+        <Skills />
+        <Projects projects={projects.data} loading={projects.loading} />
+        <Goals />
+        <Contact links={links.data} loading={links.loading} />
+      </main>
       <Footer />
     </div>
   )
