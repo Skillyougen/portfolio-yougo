@@ -2,17 +2,23 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yougo — Portfolio · Développeur IA</title>
-    <meta name="description" content="Portfolio de Pascal Yohann Saurel FOMO NGANKAMG (Yougo) — étudiant en Bachelor Développeur en Intelligence Artificielle (DEVIA) à l'EPSI Paris." />
+    <!-- Titre, description, canonique, Open Graph et données structurées :
+         injectés au build depuis src/seo.js (voir vite.config.js). -->
+    <title>Yougo — Portfolio</title>
     <meta name="theme-color" content="#E6E5E1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/photo.webp" type="image/webp" fetchpriority="high" />
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Anton&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Le contenu est pré-rendu ici au build (scripts/prerender.mjs), lisible
+         par les moteurs de recherche sans exécuter de JavaScript. -->
+    <div id="root"><!--app--></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

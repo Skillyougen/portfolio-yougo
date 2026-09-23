@@ -106,13 +106,19 @@ export default function Hero() {
               transition={{ duration: 1.1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="order-1 lg:order-2 relative z-20 mx-auto w-[min(78vw,400px)] lg:-mb-28"
             >
-              <img
-                src="/photo.png"
-                alt="Pascal Yohann Saurel FOMO NGANKAMG, diplôme en main"
-                width="408"
-                height="612"
-                className="w-full h-auto drop-shadow-[0_30px_30px_rgba(0,0,0,0.25)]"
-              />
+              {/* WebP (17 Ko) pour les navigateurs récents, PNG sinon :
+                  c'est la plus grande image de la page, affichée en premier. */}
+              <picture>
+                <source srcSet="/photo.webp" type="image/webp" />
+                <img
+                  src="/photo.png"
+                  alt="Pascal Yohann Saurel FOMO NGANKAMG, diplôme en main"
+                  width="408"
+                  height="612"
+                  fetchpriority="high"
+                  className="w-full h-auto drop-shadow-[0_30px_30px_rgba(0,0,0,0.25)]"
+                />
+              </picture>
             </motion.div>
 
             {/* Droite : intitulé du poste, façon « D03 showcase » */}

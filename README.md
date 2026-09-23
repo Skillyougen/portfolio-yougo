@@ -190,3 +190,30 @@ Suis les instructions. Ton URL sera `portfolio-yougo.vercel.app`.
 
 Made with ❤️ — YOUGO ⚡⚡
 # portfolio-yougo
+
+---
+
+## 11. Référencement (SEO)
+
+Tout est généré au build à partir de **`src/seo.js`** (titre, description, données) :
+
+| Élément | Rôle |
+|---|---|
+| Contenu pré-rendu (`scripts/prerender.mjs`) | Le HTML servi contient déjà tout le texte du site : lisible par Google, Bing et les aperçus de liens sans JavaScript. |
+| Titre, description, balise canonique | Ce qu'affiche Google dans ses résultats. |
+| Open Graph / Twitter + `public/og-image.jpg` | Aperçu (image 1200 × 630) quand le lien est partagé sur LinkedIn, WhatsApp, Facebook, Discord… |
+| Données structurées JSON-LD (`Person`, `ProfilePage`) | Nom, formation (EPSI Paris), diplômes, certification Claude 101, compétences — pour le panneau de connaissances Google. |
+| `robots.txt` et `sitemap.xml` | Générés dans `dist/` avec l'adresse de `VITE_SITE_URL`. |
+| Icônes, `site.webmanifest`, photo WebP | Icône sur mobile, chargement plus rapide (critère de classement). |
+
+### Déclarer le site à Google (une seule fois)
+
+1. Ouvrir <https://search.google.com/search-console> → **Ajouter une propriété** → **Préfixe de l'URL** → `https://portfolio-yougo-qfli.vercel.app/`.
+2. Choisir la méthode **Balise HTML**, copier la valeur de `content="…"`.
+3. Sur Vercel → projet portfolio → **Settings → Environment Variables** : `VITE_GOOGLE_SITE_VERIFICATION` = cette valeur, puis **redéployer**.
+4. Revenir dans Search Console → **Valider**, puis **Sitemaps** → soumettre `sitemap.xml`.
+5. **Inspection de l'URL** → saisir l'adresse du site → **Demander l'indexation**.
+
+Même principe pour Bing (<https://www.bing.com/webmasters>) avec `VITE_BING_SITE_VERIFICATION` — Bing peut aussi importer directement la propriété depuis Search Console.
+
+Le back-office et l'API sont, eux, **exclus** des moteurs de recherche (`noindex`).
