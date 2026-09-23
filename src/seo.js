@@ -10,6 +10,9 @@ import { PROFILE, EDUCATION, CERTIFICATION, SKILL_GROUPS } from './data.js'
 /** Adresse publique du site, sans barre finale. Surchargeable par VITE_SITE_URL. */
 export const DEFAULT_SITE_URL = 'https://portfolio-yougo-qfli.vercel.app'
 
+/** Code de la propriété Google Search Console (méthode « balise HTML »). */
+export const GOOGLE_SITE_VERIFICATION = 'xgaDghkRsB_HDZJ8jz2PJw_rzKQoK-0HSB01y-bYxFU'
+
 export const siteUrl = (env = {}) =>
   String(env.VITE_SITE_URL || DEFAULT_SITE_URL).trim().replace(/\/+$/, '')
 
@@ -70,10 +73,12 @@ export function headTags(env = {}) {
     },
   ]
 
-  // Codes de validation Search Console / Bing Webmaster Tools, à renseigner
-  // dans les variables d'environnement Vercel une fois obtenus.
-  if (env.VITE_GOOGLE_SITE_VERIFICATION) {
-    tags.push(meta({ name: 'google-site-verification', content: env.VITE_GOOGLE_SITE_VERIFICATION }))
+  // Codes de validation Search Console / Bing Webmaster Tools. Ils ne sont
+  // pas secrets (Google les lit dans la page publique) : celui de Google est
+  // donc inscrit ici, une variable d'environnement Vercel pouvant le remplacer.
+  const google = env.VITE_GOOGLE_SITE_VERIFICATION || GOOGLE_SITE_VERIFICATION
+  if (google) {
+    tags.push(meta({ name: 'google-site-verification', content: google }))
   }
   if (env.VITE_BING_SITE_VERIFICATION) {
     tags.push(meta({ name: 'msvalidate.01', content: env.VITE_BING_SITE_VERIFICATION }))
