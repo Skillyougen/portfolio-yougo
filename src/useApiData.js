@@ -30,11 +30,20 @@ export default function useApiData(fetcher, fallback, graceMs = 2500) {
         setData(result)
         setSource('api')
       })
-      .catch(() => {
+      .catch((err) => {
         if (!active) return
         settled = true
         setData(fallback)
         setSource('fallback')
+        // Invisible pour les visiteurs, mais indispensable pour comprendre
+        // pourquoi le contenu du back-office n'apparaît pas : sans ce message,
+        // le repli sur les données statiques est totalement silencieux.
+        // Un échec « Failed to fetch » sans code HTTP signale le plus souvent
+        // une origine refusée par le CORS de l'API.
+        console.warn(
+          `[YOUGO] API injoignable (${err?.status ? 'HTTP ' + err.status : err?.message || err}) : `
+          + 'données de secours affichées à la place du contenu du back-office.'
+        )
       })
       .finally(() => clearTimeout(grace))
 

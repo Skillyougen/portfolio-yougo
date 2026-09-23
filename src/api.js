@@ -2,12 +2,25 @@
 // Accès en lecture aux données publiques du portfolio, et envoi du
 // formulaire de contact. fetch suffit : pas de dépendance supplémentaire.
 
+import { resolveLinkIcon } from './icons'
+
 // VITE_API_URL prime si elle est définie (sur Vercel ou dans un .env).
 // Sinon : l'API de production pour un build, le serveur local en développement.
-const API_URL = (
+const API_URL = normalizeApiUrl(
   import.meta.env.VITE_API_URL
   || (import.meta.env.DEV ? 'http://localhost:8000/api' : 'https://backend-yougo.onrender.com/api')
-).replace(/\/+$/, '')
+)
+
+/**
+ * Accepte l'adresse du service avec ou sans « /api » et barre finale :
+ * « https://backend-yougo.onrender.com/ » saisi dans VITE_API_URL ferait
+ * sinon viser /public/projects au lieu de /api/public/projects, et le site
+ * resterait en permanence sur ses données de secours.
+ */
+function normalizeApiUrl(url) {
+  const base = String(url).trim().replace(/\/+$/, '')
+  return /\/api$/.test(base) ? base : `${base}/api`
+}
 
 // L'offre gratuite de Render met le service en veille après 15 minutes sans
 // trafic : le premier appel peut prendre jusqu'à une minute.
@@ -60,10 +73,11 @@ const displayValue = (url) =>
   url.replace(/^mailto:/i, '').replace(/^https?:\/\/(www\.)?/i, '').replace(/\/+$/, '')
 
 const toContactLink = (l) => ({
+  platform: l.platform,
   label: l.label,
   value: displayValue(l.url),
   href: l.url,
-  icon: l.icon || '🔗',
+  icon: resolveLinkIcon(l.icon, l.platform),
 })
 
 // ── Appels ───────────────────────────────────────────────

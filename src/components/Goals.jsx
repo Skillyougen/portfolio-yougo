@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { GOALS } from '../data'
+import Icon from './ui/Icon'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -67,7 +68,7 @@ export default function Goals() {
                   <span className="font-mono text-xs tracking-widest" style={{ color: g.color }}>
                     {g.num}
                   </span>
-                  <span className="text-white/10 group-hover:text-white/20 transition-colors text-sm">→</span>
+                  <span className="text-white/10 group-hover:text-white/20 transition-colors flex"><Icon name="arrow_forward" size={18} /></span>
                 </div>
                 <h3 className="font-serif font-bold text-lg text-white mb-3">{g.title}</h3>
                 <p className="font-sans text-sm text-white/50 leading-relaxed">{g.desc}</p>

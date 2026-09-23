@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Icon from './ui/Icon'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -65,9 +66,9 @@ export default function Hero() {
             {/* Pseudo */}
             <motion.p
               {...fadeUp(0.5)}
-              className="mt-3 font-mono text-sm tracking-[4px] text-mid uppercase"
+              className="mt-3 font-mono text-sm tracking-[4px] text-mid uppercase inline-flex items-center gap-1"
             >
-              YOUGO ⚡⚡
+              YOUGO <Icon name="bolt" size={18} filled className="text-accent" />
             </motion.p>
 
             {/* Quote */}
@@ -95,7 +96,7 @@ export default function Hero() {
                 download
                 className="border border-dark text-dark font-sans text-sm font-medium px-6 py-3 hover:bg-dark hover:text-cream transition-all duration-300 inline-flex items-center gap-2"
               >
-                <span>↓</span> Mon CV
+                <Icon name="download" size={18} /> Mon CV
               </motion.a>
             </motion.div>
           </div>

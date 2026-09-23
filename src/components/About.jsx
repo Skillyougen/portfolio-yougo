@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { SERVICES } from '../data'
+import Icon from './ui/Icon'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
@@ -50,13 +51,13 @@ export default function About() {
             {/* Infos */}
             <motion.div {...fadeUp(0.35)} className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {[
-                ['📍', 'Localisation', 'Douala, Cameroun'],
-                ['🎓', 'Formation', 'IUC Douala · 2024–2026'],
-                ['📧', 'Email', 'yohannngankamg@gmail.com'],
-                ['📱', 'WhatsApp', '+237 678 99 30 41'],
+                ['location_on', 'Localisation', 'Douala, Cameroun'],
+                ['school', 'Formation', 'IUC Douala · 2024–2026'],
+                ['mail', 'Email', 'yohannngankamg@gmail.com'],
+                ['smartphone', 'WhatsApp', '+237 678 99 30 41'],
               ].map(([ic, lbl, val]) => (
                 <div key={lbl} className="flex gap-3 items-start">
-                  <span className="text-lg mt-0.5">{ic}</span>
+                  <span className="mt-0.5 text-accent flex"><Icon name={ic} size={20} /></span>
                   <div>
                     <p className="font-mono text-xs text-soft tracking-widest uppercase mb-0.5">{lbl}</p>
                     <p className="font-sans text-sm text-dark">{val}</p>
@@ -78,14 +79,14 @@ export default function About() {
                 whileHover={{ x: 6, transition: { duration: 0.2 } }}
                 className="flex items-start gap-4 p-5 border border-dark/8 hover:border-dark/20 bg-cream hover:bg-white transition-all duration-300 group cursor-default"
               >
-                <span className="text-2xl mt-0.5 group-hover:scale-110 transition-transform duration-200">
-                  {s.icon}
+                <span className="mt-0.5 flex text-dark group-hover:text-accent group-hover:scale-110 transition-all duration-200">
+                  <Icon name={s.icon} size={28} />
                 </span>
                 <div>
                   <h3 className="font-sans font-semibold text-dark text-sm mb-1">{s.title}</h3>
                   <p className="font-sans text-mid text-sm leading-relaxed">{s.desc}</p>
                 </div>
-                <span className="ml-auto text-soft group-hover:text-dark transition-colors text-sm">→</span>
+                <span className="ml-auto text-soft group-hover:text-dark transition-colors flex"><Icon name="arrow_forward" size={18} /></span>
               </motion.div>
             ))}
           </div>

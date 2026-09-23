@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Icon from './ui/Icon'
+import { CATEGORY_ICONS } from '../icons'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -8,7 +10,6 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay },
 })
 
-const CAT_ICONS = { web: '🌐', mobile: '📱', desktop: '🖥️', gaming: '🎮' }
 
 /** Lien exploitable : les données de secours utilisent « # » comme marqueur. */
 const isLink = (url) => !!url && url !== '#'
@@ -118,9 +119,10 @@ function ProjectCard({ project: p, index }) {
           <motion.span
             animate={{ scale: hovered ? 1.15 : 1 }}
             transition={{ duration: 0.4 }}
-            className="text-6xl select-none"
+            className="flex"
+            style={{ color: p.color }}
           >
-            {CAT_ICONS[p.cat] || '✨'}
+            <Icon name={CATEGORY_ICONS[p.cat] || 'auto_awesome'} size={64} />
           </motion.span>
         )}
         {/* Cat badge */}
@@ -141,10 +143,10 @@ function ProjectCard({ project: p, index }) {
               href={p.github}
               target="_blank"
               rel="noreferrer"
-              className="font-sans text-xs bg-cream text-dark px-4 py-2 hover:bg-accent hover:text-white transition-colors"
+              className="font-sans text-xs bg-cream text-dark px-4 py-2 hover:bg-accent hover:text-white transition-colors inline-flex items-center gap-1"
               onClick={(e) => e.stopPropagation()}
             >
-              GitHub ↗
+              GitHub <Icon name="north_east" size={14} />
             </a>
           )}
           {isLink(p.demo) && (
@@ -152,10 +154,10 @@ function ProjectCard({ project: p, index }) {
               href={p.demo}
               target="_blank"
               rel="noreferrer"
-              className="font-sans text-xs bg-white text-dark px-4 py-2 hover:bg-accent hover:text-white transition-colors"
+              className="font-sans text-xs bg-white text-dark px-4 py-2 hover:bg-accent hover:text-white transition-colors inline-flex items-center gap-1"
               onClick={(e) => e.stopPropagation()}
             >
-              Demo ↗
+              Démo <Icon name="north_east" size={14} />
             </a>
           )}
         </motion.div>
@@ -184,14 +186,14 @@ function ProjectCard({ project: p, index }) {
           <div className="flex gap-4 mt-5 pt-4 border-t border-dark/8">
             {isLink(p.github) && (
               <a href={p.github} target="_blank" rel="noreferrer"
-                className="font-sans text-xs text-dark hover:text-accent transition-colors">
-                GitHub ↗
+                className="font-sans text-xs text-dark hover:text-accent transition-colors inline-flex items-center gap-1">
+                GitHub <Icon name="north_east" size={14} />
               </a>
             )}
             {isLink(p.demo) && (
               <a href={p.demo} target="_blank" rel="noreferrer"
-                className="font-sans text-xs text-dark hover:text-accent transition-colors">
-                Démo ↗
+                className="font-sans text-xs text-dark hover:text-accent transition-colors inline-flex items-center gap-1">
+                Démo <Icon name="north_east" size={14} />
               </a>
             )}
           </div>

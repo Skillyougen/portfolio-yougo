@@ -45,22 +45,22 @@ export const SKILL_GROUPS = [
 // ─── SERVICES (ABOUT) ─────────────────────────────────────
 export const SERVICES = [
   {
-    icon: '🌐',
+    icon: 'language',
     title: 'Website Development',
     desc: 'Applications web modernes et performantes avec React.js, Laravel ou Django.',
   },
   {
-    icon: '📱',
+    icon: 'smartphone',
     title: 'Mobile App',
     desc: 'Applications cross-platform fluides avec React Native.',
   },
   {
-    icon: '🖥️',
+    icon: 'desktop_windows',
     title: 'Desktop Development',
     desc: 'Applications desktop robustes en C# et Java avec architecture multi-couches.',
   },
   {
-    icon: '🎮',
+    icon: 'sports_esports',
     title: 'Game Development',
     desc: 'Jeux interactifs développés avec Unity et C# sous Visual Studio.',
   },
@@ -115,28 +115,32 @@ export const INITIAL_PROJECTS = [
 // back-office via l'API. Ceux-ci ne s'affichent que si l'API est injoignable.
 export const CONTACT_LINKS = [
   {
+    platform: 'email',
     label: 'Email',
     value: 'yohannngankamg@gmail.com',
     href: 'mailto:yohannngankamg@gmail.com',
-    icon: '✉️',
+    icon: 'mail',
   },
   {
+    platform: 'whatsapp',
     label: 'WhatsApp',
     value: '+237 678 99 30 41',
     href: 'https://wa.me/237678993041',
-    icon: '💬',
+    icon: 'chat',
   },
   {
+    platform: 'github',
     label: 'GitHub',
     value: 'github.com/skillyougen',
     href: 'https://github.com/skillyougen',
-    icon: '⬡',
+    icon: 'code',
   },
   {
+    platform: 'linkedin',
     label: 'LinkedIn',
     value: 'linkedin.com/in/yougo',
     href: 'https://linkedin.com',
-    icon: '🔗',
+    icon: 'work',
   },
 ]
 

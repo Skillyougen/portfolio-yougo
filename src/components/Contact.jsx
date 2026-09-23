@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { sendMessage, errorMessage } from '../api'
+import Icon from './ui/Icon'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -87,12 +88,12 @@ export default function Contact({ links, loading }) {
                       whileHover={{ x: 6 }}
                       className="flex items-center gap-4 group border border-dark/8 px-5 py-4 bg-white hover:border-dark/20 transition-all duration-300"
                     >
-                      <span className="text-xl w-8 text-center">{l.icon}</span>
+                      <span className="w-8 flex justify-center text-accent"><Icon name={l.icon} size={24} /></span>
                       <div className="flex-1 min-w-0">
                         <p className="font-mono text-xs text-soft uppercase tracking-widest mb-0.5">{l.label}</p>
                         <p className="font-sans text-sm text-dark truncate">{l.value}</p>
                       </div>
-                      <span className="text-soft group-hover:text-dark transition-colors ml-auto">↗</span>
+                      <span className="text-soft group-hover:text-dark transition-colors ml-auto flex"><Icon name="north_east" size={18} /></span>
                     </motion.a>
                   ))}
             </div>
@@ -102,7 +103,7 @@ export default function Contact({ links, loading }) {
           <motion.div {...fadeUp(0.2)} className="bg-white border border-dark/8 p-8 md:p-10">
             {status === 'sent' ? (
               <div className="text-center py-12" role="status">
-                <div className="text-5xl mb-5">✅</div>
+                <div className="mb-5 flex justify-center text-green-600"><Icon name="check_circle" size={56} filled /></div>
                 <h3 className="font-serif text-2xl font-bold text-dark mb-2">Message envoyé !</h3>
                 <p className="font-sans text-mid text-sm mb-8">Merci, je vous réponds dès que possible.</p>
                 <button
@@ -158,7 +159,7 @@ export default function Contact({ links, loading }) {
                     className="font-sans font-medium text-sm bg-dark text-cream px-6 py-4 transition-colors duration-300 text-left flex items-center justify-between group disabled:opacity-60"
                   >
                     <span>{status === 'sending' ? 'Envoi en cours…' : 'Envoyer le message'}</span>
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    <span className="group-hover:translate-x-1 transition-transform flex"><Icon name="arrow_forward" size={18} /></span>
                   </motion.button>
                 </div>
               </form>
