@@ -14,7 +14,10 @@ export const PROFILE = {
   phoneHref: 'tel:+33663788667',
   email: 'yohannngankamg@gmail.com',
   location: 'Paris, France',
-  cv: '/cv-yougo.pdf',
+  // Nom de fichier changé à chaque nouvelle version du CV : aucun navigateur
+  // ni cache ne peut resservir l'ancienne (l'ancienne adresse redirige ici).
+  cv: '/cv-yohann-fomo-ngankamg.pdf',
+  cvFileName: 'CV - Yohann FOMO NGANKAMG.pdf',
 }
 
 // ─── CURSUS SCOLAIRE ──────────────────────────────────────
@@ -173,6 +176,13 @@ export const CONTACT_LINKS = [
     value: 'yohannngankamg@gmail.com',
     href: 'mailto:yohannngankamg@gmail.com',
     icon: 'mail',
+  },
+  {
+    platform: 'whatsapp',
+    label: 'WhatsApp',
+    value: '+33 6 63 78 86 67',
+    href: 'https://wa.me/33663788667',
+    icon: 'chat',
   },
   {
     platform: 'phone',

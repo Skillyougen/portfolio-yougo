@@ -101,9 +101,13 @@ Remplace-le par :
 
 ## 5. Ajouter ton vrai CV
 
-Place ton fichier PDF dans `public/` avec le nom `cv-yougo.pdf`.
+Le CV actuel est `public/cv-yohann-fomo-ngankamg.pdf`, référencé par `PROFILE.cv`
+dans `src/data.js` (boutons « Mon CV », sitemap).
 
-Le bouton "Mon CV" dans le Hero le téléchargera automatiquement.
+Pour une nouvelle version : dépose le PDF dans `public/` **sous un nouveau nom**,
+mets à jour `PROFILE.cv`, et fais pointer la redirection de `vercel.json` vers ce
+nouveau nom. Changer de nom garantit qu'aucun navigateur ni cache ne resservira
+l'ancienne version ; l'ancienne adresse `/cv-yougo.pdf` redirige vers la nouvelle.
 
 ---
 

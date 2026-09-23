@@ -69,8 +69,19 @@ const toProject = (p) => ({
 })
 
 /** Texte affiché sous le libellé : l'adresse sans son schéma. */
-const displayValue = (url) =>
-  url.replace(/^mailto:/i, '').replace(/^https?:\/\/(www\.)?/i, '').replace(/\/+$/, '')
+/** « 33663788667 » → « +33 6 63 78 86 67 » ; autres indicatifs : « +237678993041 ». */
+export function formatPhone(digits) {
+  const d = String(digits).replace(/\D/g, '')
+  if (/^33\d{9}$/.test(d)) return `+33 ${d[2]} ${d.slice(3).match(/../g).join(' ')}`
+  return `+${d}`
+}
+
+/** Texte affiché sous un lien : le numéro en clair pour WhatsApp et le téléphone. */
+const displayValue = (url) => {
+  const phone = url.match(/^(?:https?:\/\/)?(?:wa\.me\/|api\.whatsapp\.com\/send\?phone=|tel:)\+?([\d\s.-]{6,})/i)
+  if (phone) return formatPhone(phone[1])
+  return url.replace(/^mailto:/i, '').replace(/^https?:\/\/(www\.)?/i, '').replace(/\/+$/, '')
+}
 
 const toContactLink = (l) => ({
   platform: l.platform,

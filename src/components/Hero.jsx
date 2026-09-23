@@ -91,7 +91,7 @@ export default function Hero() {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   href={PROFILE.cv}
-                  download
+                  download={PROFILE.cvFileName}
                   className="border border-ink/70 text-ink font-sans text-sm font-medium px-6 py-3 rounded-full hover:bg-ink hover:text-white transition-all duration-300 inline-flex items-center gap-2"
                 >
                   <Icon name="download" size={18} /> Mon CV

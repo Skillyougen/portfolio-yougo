@@ -98,7 +98,7 @@ export default function Education() {
               </a>
               <a
                 href={PROFILE.cv}
-                download
+                download={PROFILE.cvFileName}
                 className="border border-ink/70 text-ink font-sans text-sm font-medium px-5 py-3 rounded-full hover:bg-ink hover:text-white transition-colors inline-flex items-center gap-2"
               >
                 <Icon name="download" size={16} /> Mon CV
