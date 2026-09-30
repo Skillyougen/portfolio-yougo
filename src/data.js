@@ -16,7 +16,7 @@ export const PROFILE = {
   location: 'Paris, France',
   // Nom de fichier changé à chaque nouvelle version du CV : aucun navigateur
   // ni cache ne peut resservir l'ancienne (l'ancienne adresse redirige ici).
-  cv: '/cv-yohann-fomo-ngankamg.pdf',
+  cv: '/cv-yohann-fomo-ngankamg-v2.pdf',
   cvFileName: 'CV - Yohann FOMO NGANKAMG.pdf',
 }
 
@@ -67,16 +67,21 @@ export const CERTIFICATION = {
 // ─── SKILLS ───────────────────────────────────────────────
 export const SKILL_GROUPS = [
   {
-    cat: 'Frontend',
-    color: '#E8533A',
-    bg: '#FDF1EE',
-    items: ['React.js', 'JavaScript', 'HTML / CSS', 'Tailwind CSS', 'React Native'],
-  },
-  {
-    cat: 'Backend',
+    // Honnêteté avant tout : le web et le mobile avancés sont réalisés avec
+    // l'IA, qui écrit le code que je conçois, pilote, teste et corrige.
+    cat: 'Vibe coding — web & mobile',
     color: '#2563EB',
     bg: '#EEF3FD',
-    items: ['Laravel (PHP)', 'Django', 'API REST'],
+    note: "Réalisé avec l'IA (Claude) : je conçois, je pilote, je teste et je corrige — l'IA écrit le code.",
+    items: ['React.js', 'JavaScript', 'Tailwind CSS', 'Laravel (PHP)', 'API REST', 'React Native'],
+    wide: true,
+  },
+  {
+    cat: 'Web — les bases',
+    color: '#E8533A',
+    bg: '#FDF1EE',
+    note: 'Ce que je code moi-même.',
+    items: ['HTML', 'CSS'],
   },
   {
     cat: 'Desktop',
@@ -103,12 +108,12 @@ export const SERVICES = [
   {
     icon: 'language',
     title: 'Développement web',
-    desc: 'Applications web modernes et performantes avec React.js, Laravel ou Django.',
+    desc: "Sites et applications web en vibe coding : je conçois et pilote l'IA (Claude), sur une base HTML/CSS que je maîtrise.",
   },
   {
     icon: 'smartphone',
     title: 'Applications mobiles',
-    desc: 'Applications cross-platform fluides avec React Native.',
+    desc: "Applications React Native réalisées en vibe coding, avec l'IA comme co-développeur.",
   },
   {
     icon: 'desktop_windows',
@@ -127,8 +132,8 @@ export const INITIAL_PROJECTS = [
   {
     id: 1,
     title: 'Portfolio Web',
-    desc: 'Portfolio personnel développé en React.js avec Tailwind CSS et Framer Motion. Animations fluides, panel secret, design minimaliste premium.',
-    tags: ['React.js', 'Tailwind', 'Framer Motion'],
+    desc: 'Portfolio personnel réalisé en vibe coding avec Claude (React.js, Tailwind CSS, Framer Motion) : animations fluides, back-office, design éditorial.',
+    tags: ['Vibe coding', 'React.js', 'Tailwind'],
     cat: 'web',
     github: '#',
     demo: '#',
@@ -137,8 +142,8 @@ export const INITIAL_PROJECTS = [
   {
     id: 2,
     title: 'App Mobile Cross-Platform',
-    desc: 'Application mobile développée avec React Native intégrant une base MySQL et une interface utilisateur élégante.',
-    tags: ['React Native', 'MySQL', 'JavaScript'],
+    desc: 'Application mobile réalisée en vibe coding avec React Native, intégrant une base MySQL et une interface soignée.',
+    tags: ['Vibe coding', 'React Native', 'MySQL'],
     cat: 'mobile',
     github: '#',
     demo: '#',
@@ -224,7 +229,7 @@ export const GOALS = [
   {
     num: '03',
     title: 'Innovation & Impact',
-    desc: "Allier mes compétences FullStack, Desktop et Gaming avec l'IA pour bâtir la prochaine génération de produits numériques — des expériences qui transforment la vie des utilisateurs.",
+    desc: "Allier le vibe coding, le développement desktop et le jeu vidéo avec l'IA pour bâtir la prochaine génération de produits numériques — des expériences qui transforment la vie des utilisateurs.",
     color: '#059669',
   },
 ]

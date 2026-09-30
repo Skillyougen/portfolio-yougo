@@ -101,13 +101,14 @@ Remplace-le par :
 
 ## 5. Ajouter ton vrai CV
 
-Le CV actuel est `public/cv-yohann-fomo-ngankamg.pdf`, référencé par `PROFILE.cv`
+Le CV actuel est `public/cv-yohann-fomo-ngankamg-v2.pdf`, référencé par `PROFILE.cv`
 dans `src/data.js` (boutons « Mon CV », sitemap).
 
 Pour une nouvelle version : dépose le PDF dans `public/` **sous un nouveau nom**,
 mets à jour `PROFILE.cv`, et fais pointer la redirection de `vercel.json` vers ce
 nouveau nom. Changer de nom garantit qu'aucun navigateur ni cache ne resservira
-l'ancienne version ; l'ancienne adresse `/cv-yougo.pdf` redirige vers la nouvelle.
+l'ancienne version ; les anciennes adresses redirigent vers la nouvelle (redirections
+temporaires, pour pouvoir les réorienter à la version suivante).
 
 ---
 

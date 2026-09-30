@@ -127,7 +127,7 @@ export function structuredData(url) {
         recognizedBy: { '@type': 'Organization', name: CERTIFICATION.issuer },
       },
     ],
-    knowsAbout: ['Intelligence artificielle', ...SKILL_GROUPS.flatMap((g) => g.items)],
+    knowsAbout: ['Intelligence artificielle', 'Vibe coding (développement assisté par IA)', ...SKILL_GROUPS.flatMap((g) => g.items)],
     knowsLanguage: ['fr', 'en'],
     sameAs: SEO.sameAs,
   }

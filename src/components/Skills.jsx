@@ -8,7 +8,7 @@ const LANGUAGES = [
   ['EN', 'Anglais', 'B1', 3],
 ]
 const TOOLS = ['VS Code', 'Visual Studio', 'NetBeans', 'Git & GitHub', 'Docker', 'Claude', 'Suite Office']
-const MARQUEE = ['React.js', 'Laravel', 'React Native', 'C# .NET', 'Java', 'Unity', 'PostgreSQL', 'Django', 'IA & ML']
+const MARQUEE = ['HTML & CSS', 'Vibe coding', 'React.js', 'React Native', 'C# .NET', 'Java', 'Unity', 'SQL', 'IA & ML']
 
 export default function Skills() {
   return (
@@ -21,6 +21,10 @@ export default function Skills() {
             <p className="font-sans text-mid text-lg leading-relaxed max-w-sm">
               Des technologies variées couvrant le web, le mobile, le desktop et le jeu vidéo — avec un objectif clair :
               <b className="text-ink font-semibold"> l'intelligence artificielle</b>.
+            </p>
+            <p className="font-sans text-mid text-base leading-relaxed max-w-sm mt-4">
+              Pour le web et le mobile, je travaille en <b className="text-ink font-semibold">vibe coding</b> : je conçois
+              et pilote le développement avec l'IA, sur des bases HTML/CSS que je maîtrise.
             </p>
 
             <p className="kicker mt-10 mb-3">Langues</p>
@@ -55,12 +59,13 @@ export default function Skills() {
               <motion.div
                 key={g.cat}
                 {...reveal(0.15 + i * 0.06)}
-                className={`card p-6 ${i === SKILL_GROUPS.length - 1 && SKILL_GROUPS.length % 2 ? 'sm:col-span-2' : ''}`}
+                className={`card p-6 ${g.wide ? 'sm:col-span-2' : ''}`}
               >
-                <div className="flex items-center gap-2.5 mb-4">
-                  <span className="w-2.5 h-2.5 rounded-full" style={{ background: g.color }} />
+                <div className={`flex items-center gap-2.5 ${g.note ? 'mb-2' : 'mb-4'}`}>
+                  <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: g.color }} />
                   <h3 className="font-display uppercase text-2xl text-ink leading-none">{g.cat}</h3>
                 </div>
+                {g.note && <p className="font-sans text-xs text-mid leading-snug mb-4">{g.note}</p>}
                 <div className="flex flex-wrap gap-2">
                   {g.items.map((it) => (
                     <span

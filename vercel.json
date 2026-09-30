@@ -30,8 +30,13 @@
   "redirects": [
     {
       "source": "/cv-yougo.pdf",
-      "destination": "/cv-yohann-fomo-ngankamg.pdf",
-      "permanent": true
+      "destination": "/cv-yohann-fomo-ngankamg-v2.pdf",
+      "permanent": false
+    },
+    {
+      "source": "/cv-yohann-fomo-ngankamg.pdf",
+      "destination": "/cv-yohann-fomo-ngankamg-v2.pdf",
+      "permanent": false
     }
   ]
 }
