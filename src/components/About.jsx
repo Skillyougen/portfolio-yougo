@@ -29,8 +29,9 @@ export default function About() {
               à l'EPSI Paris</b>.
             </motion.p>
             <motion.p {...reveal(0.2)} className="mt-4 font-sans text-mid text-base md:text-lg leading-relaxed">
-              Passionné par le développement web, mobile, desktop et le jeu vidéo, je construis des produits qui allient
-              technique et créativité — avec un cap : l'intelligence artificielle. Je suis aussi certifié <b className="text-ink font-medium">Claude 101</b> par Anthropic.
+              Passionné par le développement et le jeu vidéo, je code en C# et en Java, je maîtrise les bases du HTML/CSS,
+              et je réalise mes projets web et mobiles en <b className="text-ink font-medium">vibe coding</b>, avec l'IA
+              comme co-développeur — avec un cap : l'intelligence artificielle. Je suis aussi certifié <b className="text-ink font-medium">Claude 101</b> par Anthropic.
             </motion.p>
 
             <motion.blockquote {...reveal(0.25)} className="my-10 pl-6 border-l-2 border-accent">
