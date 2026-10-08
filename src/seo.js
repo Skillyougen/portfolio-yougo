@@ -27,7 +27,7 @@ export const SEO = {
   locale: 'fr_FR',
   image: '/og-image.jpg',
   imageAlt: "Yougo — Développeur en intelligence artificielle, Bachelor DEVIA à l'EPSI Paris",
-  sameAs: ['https://github.com/skillyougen'],
+  sameAs: ['https://github.com/skillyougen', 'https://www.linkedin.com/in/pascal-yohann-saurel-f-510984326'],
 }
 
 const escapeAttr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')

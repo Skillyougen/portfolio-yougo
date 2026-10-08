@@ -16,7 +16,7 @@ export const PROFILE = {
   location: 'Paris, France',
   // Nom de fichier changé à chaque nouvelle version du CV : aucun navigateur
   // ni cache ne peut resservir l'ancienne (l'ancienne adresse redirige ici).
-  cv: '/cv-yohann-fomo-ngankamg-v3.pdf',
+  cv: '/cv-yohann-fomo-ngankamg-v4.pdf',
   cvFileName: 'CV - Yohann FOMO NGANKAMG.pdf',
 }
 
@@ -218,8 +218,8 @@ export const CONTACT_LINKS = [
   {
     platform: 'linkedin',
     label: 'LinkedIn',
-    value: 'linkedin.com/in/yougo',
-    href: 'https://linkedin.com',
+    value: 'linkedin.com/in/pascal-yohann-saurel-f-510984326',
+    href: 'https://www.linkedin.com/in/pascal-yohann-saurel-f-510984326',
     icon: 'work',
   },
 ]
