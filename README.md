@@ -101,7 +101,7 @@ Remplace-le par :
 
 ## 5. Ajouter ton vrai CV
 
-Le CV actuel est `public/cv-yohann-fomo-ngankamg-v3.pdf`, référencé par `PROFILE.cv`
+Le CV actuel est `public/cv-yohann-fomo-ngankamg-v4.pdf`, référencé par `PROFILE.cv`
 dans `src/data.js` (boutons « Mon CV », sitemap).
 
 Pour une nouvelle version : dépose le PDF dans `public/` **sous un nouveau nom**,
