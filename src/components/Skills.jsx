@@ -4,8 +4,8 @@ import SectionTitle from './ui/SectionTitle'
 import { reveal } from '../motion'
 
 const LANGUAGES = [
-  ['FR', 'Français', 'B2', 4],
-  ['EN', 'Anglais', 'B1', 3],
+  ['FR', 'Français', 'A2', 2],
+  ['EN', 'Anglais', 'A1', 1],
 ]
 const TOOLS = ['VS Code', 'Visual Studio', 'NetBeans', 'Git & GitHub', 'Docker', 'Claude', 'Suite Office']
 const MARQUEE = ['HTML & CSS', 'Vibe coding', 'React.js', 'React Native', 'C# .NET', 'Java', 'Unity', 'SQL', 'IA & ML']

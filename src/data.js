@@ -16,7 +16,7 @@ export const PROFILE = {
   location: 'Paris, France',
   // Nom de fichier changé à chaque nouvelle version du CV : aucun navigateur
   // ni cache ne peut resservir l'ancienne (l'ancienne adresse redirige ici).
-  cv: '/cv-yohann-fomo-ngankamg-v2.pdf',
+  cv: '/cv-yohann-fomo-ngankamg-v3.pdf',
   cvFileName: 'CV - Yohann FOMO NGANKAMG.pdf',
 }
 
@@ -73,7 +73,7 @@ export const SKILL_GROUPS = [
     color: '#2563EB',
     bg: '#EEF3FD',
     note: "Réalisé avec l'IA (Claude) : je conçois, je pilote, je teste et je corrige — l'IA écrit le code.",
-    items: ['React.js', 'JavaScript', 'Tailwind CSS', 'Laravel (PHP)', 'API REST', 'React Native'],
+    items: ['React', 'Next.js', 'NestJS', 'Laravel', 'Tailwind CSS', 'React Native'],
     wide: true,
   },
   {
@@ -93,12 +93,14 @@ export const SKILL_GROUPS = [
     cat: 'Gaming',
     color: '#059669',
     bg: '#EDFAF4',
-    items: ['Unity (C#)', 'Visual Studio'],
+    note: 'Les bases.',
+    items: ['Unity (C#)'],
   },
   {
     cat: 'Base de données',
     color: '#D97706',
     bg: '#FFFBEB',
+    note: 'Niveau moyen.',
     items: ['SQL', 'MySQL', 'PostgreSQL'],
   },
 ]
@@ -123,7 +125,7 @@ export const SERVICES = [
   {
     icon: 'sports_esports',
     title: 'Jeu vidéo',
-    desc: 'Jeux interactifs développés avec Unity et C# sous Visual Studio.',
+    desc: 'Premiers prototypes de jeux sous Unity (C#) : les bases du moteur et du gameplay.',
   },
 ]
 
@@ -131,43 +133,53 @@ export const SERVICES = [
 export const INITIAL_PROJECTS = [
   {
     id: 1,
-    title: 'Portfolio Web',
-    desc: 'Portfolio personnel réalisé en vibe coding avec Claude (React.js, Tailwind CSS, Framer Motion) : animations fluides, back-office, design éditorial.',
-    tags: ['Vibe coding', 'React.js', 'Tailwind'],
+    title: 'Portfolio personnel',
+    desc: "Portfolio avec back-office d'administration des projets, des liens et des messages.",
+    tags: ['Front : React', 'Back : Laravel', 'Back-office'],
     cat: 'web',
-    github: '#',
+    github: 'https://github.com/Skillyougen/portfolio-yougo',
     demo: '#',
     color: '#E8533A',
   },
   {
     id: 2,
-    title: 'App Mobile Cross-Platform',
-    desc: 'Application mobile réalisée en vibe coding avec React Native, intégrant une base MySQL et une interface soignée.',
-    tags: ['Vibe coding', 'React Native', 'MySQL'],
-    cat: 'mobile',
-    github: '#',
-    demo: '#',
-    color: '#2563EB',
-  },
-  {
-    id: 3,
-    title: 'Système Desktop 3 Tiers',
-    desc: "Application desktop C# avec architecture multicouche (présentation, logique, données) et interface WinForms.",
-    tags: ['C#', 'SQL Server', 'WinForms'],
-    cat: 'desktop',
+    title: 'Yougo Worlds',
+    desc: 'Plateforme de publication de projets numériques (manga/BD, jeux, films), avec back-office.',
+    tags: ['Front : React', 'Back : Laravel', 'Back-office'],
+    cat: 'web',
     github: '#',
     demo: '#',
     color: '#7C3AED',
   },
   {
+    id: 3,
+    title: 'YouFolio Creator',
+    desc: 'Générateur de CV et de portfolios.',
+    tags: ['Front : Next.js', 'Back : NestJS'],
+    cat: 'web',
+    github: '#',
+    demo: '#',
+    color: '#2563EB',
+  },
+  {
     id: 4,
-    title: 'Mini-Jeu Unity',
-    desc: 'Prototype de jeu 2D développé avec Unity et C# — exploration des mécaniques de gameplay et du moteur Unity.',
-    tags: ['Unity', 'C#', 'Visual Studio'],
-    cat: 'gaming',
+    title: 'Gest F',
+    desc: 'Gestion de comptes bancaires et de budget mensuel.',
+    tags: ['Front : Next.js', 'Back : NestJS'],
+    cat: 'web',
     github: '#',
     demo: '#',
     color: '#059669',
+  },
+  {
+    id: 5,
+    title: 'SEDJA Peinture',
+    desc: "Site vitrine d'une entreprise de peinture.",
+    tags: ['Front : HTML / CSS / JavaScript'],
+    cat: 'web',
+    github: '#',
+    demo: '#',
+    color: '#D97706',
   },
 ]
 
