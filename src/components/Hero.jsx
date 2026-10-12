@@ -10,7 +10,7 @@ const HIGHLIGHTS = [
     kicker: 'Actuellement',
     title: 'Bachelor Bac+3 DEVIA',
     text: "Développeur en intelligence artificielle — EPSI Paris",
-    logo: '/epsi.png',
+    logo: '/epsi-mark.png',
     href: '#parcours',
   },
   {

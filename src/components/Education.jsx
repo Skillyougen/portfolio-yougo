@@ -6,7 +6,7 @@ import { reveal } from '../motion'
 
 // Hauteur des marches (écran large) : le cursus se lit comme un escalier.
 const STEP_HEIGHTS = ['h-20', 'h-36', 'h-52', 'h-72']
-const EPSI_STRIPES = 'linear-gradient(90deg,#5b2a5f 0 14%,#e5233d 14% 28%,#fcd90f 28% 43%,#ef7d22 43% 57%,#4fae45 57% 71%,#0aa3c2 71% 86%,#8a3e8f 86% 100%)'
+const EPSI_STRIPES = 'linear-gradient(90deg,#484891 0 14%,#d93d55 14% 28%,#e5793c 28% 43%,#f1cc52 43% 57%,#85bf54 57% 71%,#30b3cc 71% 86%,#91549d 86% 100%)'
 
 export default function Education() {
   return (
@@ -49,7 +49,7 @@ export default function Education() {
                 </div>
 
                 {e.current ? (
-                  <img src="/epsi.png" alt="EPSI — l'École d'ingénierie informatique" className="mt-4 h-16 w-auto" />
+                  <img src="/epsi-logo.png" alt="EPSI — l'école d'ingénierie informatique" className="mt-4 h-16 w-auto" />
                 ) : (
                   <span className="mt-4 w-12 h-12 rounded-2xl bg-paper flex items-center justify-center text-ink">
                     <Icon name={e.icon} size={26} />
