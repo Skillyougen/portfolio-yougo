@@ -16,7 +16,7 @@ export const PROFILE = {
   location: 'Paris, France',
   // Nom de fichier changé à chaque nouvelle version du CV : aucun navigateur
   // ni cache ne peut resservir l'ancienne (l'ancienne adresse redirige ici).
-  cv: '/cv-yohann-fomo-ngankamg-v8.pdf',
+  cv: '/cv-yohann-fomo-ngankamg-v9.pdf',
   cvFileName: 'CV - Yohann FOMO NGANKAMG.pdf',
 }
 
